@@ -95,7 +95,7 @@ PITA/ ├── css/ │ ├── dark-theme.css │ ├── darktheme.js │
 
 1. **Clonar el Repositorio:**
    ```bash
-   git clone https://github.com/ArathBl4ckH4t/PITA.git
+   git clone https://github.com/dillanava/PITA-Programa-Institucional-de-Tutor-as-y-Asesor-as-
 
 2. **Configuración del Servidor:**
 
@@ -170,9 +170,9 @@ Una vez instalado, el sistema permite a los usuarios:
 
 # Créditos
 | Desarrollador Principal:
-|| <Ing. Arath Nieto> +52 5569891361 LinkedIn: www.linkedin.com/in/dillan-bermeo-nava-a36184319/
+|| <Ing. Dillan Bermeo Nava> +52 5569891361 LinkedIn: www.linkedin.com/in/dillan-bermeo-nava-a36184319/
 ||| <Ing. Carbajal Silva>
-|||| <Ing. Dillan Nava>
+|||| <Ing. Arath Nieto>
 
 
 # Equipo de Desarrollo:
@@ -213,7 +213,7 @@ Una vez instalado, el sistema permite a los usuarios:
 -   Correo: dillan.bermeo@hotmail.com
 
 **Repositorio GitHub:**
--   [github.com/ArathBl4ckH4t/PITA](https://github.com/ArathBl4ckH4t/PITA.git)
+-   [github.com/dillanava/PITA-Programa-Institucional-de-Tutor-as-y-Asesor-as-](https://github.com/dillanava/PITA-Programa-Institucional-de-Tutor-as-y-Asesor-as-)
 
 -   **[PITA fue creado con el objetivo de potenciar la gestión académica en la UPTex y fomentar un ambiente de mejora continua y competitividad saludable entre los estudiantes.]**
 
