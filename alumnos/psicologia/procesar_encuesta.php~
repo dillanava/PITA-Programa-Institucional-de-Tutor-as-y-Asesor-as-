@@ -1,0 +1,74 @@
+<?php
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf\Tcpdf;
+
+// Configuración de la conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dbs10610773";
+
+// Crear una nueva instancia de conexión a la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Recibir los datos del formulario (asegúrate de validar y sanitizar los datos según tus necesidades)
+$nombre = $_POST['nombre'];
+$matricula = $_POST['matricula'];
+$carrera = $_POST['carrera'];
+$grupo = $_POST['grupo'];
+$atencion_psicologica = $_POST['atencion_psicologica'];
+$tratamiento_psiquiatrico = $_POST['tratamiento_psiquiatrico'];
+$asesoria_psicologica = $_POST['asesoria_psicologica'];
+
+// Insertar los datos en la base de datos
+$sql = "INSERT INTO encuesta (
+    nombre, matricula, carrera, grupo, atencion_psicologica, tratamiento_psiquiatrico, asesoria_psicologica
+) VALUES (
+    '$nombre', '$matricula', '$carrera', '$grupo', '$atencion_psicologica', '$tratamiento_psiquiatrico', '$asesoria_psicologica'
+)";
+
+if ($conn->query($sql) === TRUE) {
+    // Cargar el archivo Excel existente
+    $spreadsheet = IOFactory::load('4 Entrevista inicial.xlsx');
+
+    // Obtener la hoja activa
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Encontrar la primera fila vacía para agregar los nuevos datos sin sobrescribir
+    $nextRow = $sheet->getHighestRow() + 1;
+
+    // Escribir los datos en las celdas específicas
+    $sheet->setCellValue('A' . $nextRow, $nombre);
+    $sheet->setCellValue('B' . $nextRow, $matricula);
+    $sheet->setCellValue('C' . $nextRow, $carrera);
+    $sheet->setCellValue('D' . $nextRow, $grupo);
+    $sheet->setCellValue('E' . $nextRow, $atencion_psicologica);
+    $sheet->setCellValue('F' . $nextRow, $tratamiento_psiquiatrico);
+    $sheet->setCellValue('G' . $nextRow, $asesoria_psicologica);
+
+    // Guardar el archivo Excel actualizado
+    $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+    $writer->save('4 Entrevista inicial.xlsx');
+
+    // Crear el archivo PDF directamente desde el Excel usando Tcpdf
+    $pdfWriter = new Tcpdf($spreadsheet);
+    $pdfFilename = '4 Entrevista inicial.pdf';
+    $pdfWriter->save($pdfFilename);
+
+    echo "Datos guardados correctamente en '4 Entrevista inicial.xlsx' y PDF generado.";
+} else {
+    echo "Error al insertar datos en la base de datos: " . $conn->error;
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
+?>
+

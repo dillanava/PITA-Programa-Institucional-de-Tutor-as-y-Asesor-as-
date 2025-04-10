@@ -1,0 +1,22 @@
+{
+    "name": "edurnet/proyecto",
+    "description": "una encuesta",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Edurnet\\Proyecto\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fatima"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpoffice/phpspreadsheet": "^2.1",
+        "mpdf/mpdf": "^8.2",
+        "tecnickcom/tcpdf": "^6.7"
+    }
+}
